@@ -35,7 +35,8 @@ const Quiz = () => {
   }
   return (
     <div>
-      <div>Quiz</div>
+      <div className='text-2xl py-2'>Quiz</div>
+      <hr />
       {areQuestionsLoaded &&
         <>
           {renderQuestionAnswer(questions[currentIndex])}

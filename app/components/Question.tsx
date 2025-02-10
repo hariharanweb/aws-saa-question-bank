@@ -7,18 +7,18 @@ export interface QuestionAnswersType {
 
 const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswersType }) => {
   const renderAnswer = (answer: string) => {
-    return (<>
-      <input type='radio' />
-      {answer}
-    </>)
+    return (<div className='py-1'>
+      <input type='radio' id={answer}/>
+      <label className='pl-2'>{answer}</label>
+    </div>)
   }
   return (
-    <>
-      <div>{questionAnswers.question}</div>
+    <div className='py-2'>
+      <div className='py-4'>{questionAnswers.question}</div>
       {questionAnswers.answers.map((answer, index) => {
         return (<div key={index}>{renderAnswer(answer)}</div>)
       })}
-    </>
+    </div>
   )
 }
 
