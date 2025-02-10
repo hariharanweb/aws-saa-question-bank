@@ -5,12 +5,18 @@ export interface QuestionAnswersType {
   answers: string[];
 }
 
-const QuestionAnswers = ({ question, answers }: QuestionAnswersType) => {
+const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswersType }) => {
+  const renderAnswer = (answer: string) => {
+    return (<>
+      <input type='radio' />
+      {answer}
+    </>)
+  }
   return (
     <>
-      <div>{question}</div>
-      {answers.map((answer) => {
-        return (<div>{answer}</div>)
+      <div>{questionAnswers.question}</div>
+      {questionAnswers.answers.map((answer, index) => {
+        return (<div key={index}>{renderAnswer(answer)}</div>)
       })}
     </>
   )
