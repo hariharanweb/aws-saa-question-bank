@@ -13,11 +13,13 @@ const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswers
     </div>)
   }
   return (
-    <div className='py-2'>
-      <div className='py-4'>{questionAnswers.question}</div>
-      {questionAnswers.answers.map((answer, index) => {
-        return (<div key={index}>{renderAnswer(answer)}</div>)
-      })}
+    <div className='my-4 border border-white rounded-md shadow-md'>
+      <div className='p-2'>
+        <div className='py-2'>{questionAnswers.question}</div>
+        {questionAnswers.answers.map((answer, index) => {
+          return (<div key={index}>{renderAnswer(answer)}</div>)
+        })}
+      </div>
     </div>
   )
 }
