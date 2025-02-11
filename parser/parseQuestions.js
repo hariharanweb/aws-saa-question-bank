@@ -21,12 +21,15 @@ const parse = () => {
       answerCount = 3
     }
     const answers = [];
-
+    const answerOptions = ['A', 'B', 'C', 'D', 'E', 'F']
     for (let i = 1; i < questionParts.length; i += 2) {
       if (questionParts[i]) {
         const option = questionParts[i].trim();
         const answerText = option.substring(2).trim();
-        answers.push(answerText);
+        answers.push({
+          option: answerOptions[answers.length],
+          text: answerText
+        });
       }
     }
 
