@@ -7,6 +7,7 @@ export interface AnswerType {
 }
 
 export interface QuestionAnswersType {
+  questionId: string,
   question: string;
   answers: AnswerType[];
   answerCount: number;
@@ -43,8 +44,8 @@ const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswers
 
   const renderAnswer = (answer: AnswerType, answerCount: number, correctAnswers: string[]) => {
     const answerCss = selectedAnswers.indexOf(answer.option) >= 0 && correctAnswers.indexOf(answer.option) >= 0 ?
-      'py-1 bg-green-900' :
-      'py-1'
+      'py-2 px-2 bg-green-900 rounded-md' :
+      'py-1 px-2'
     if (answerCount === 1) {
       return (
         <div className={answerCss}>
@@ -79,7 +80,10 @@ const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswers
   return (
     <div className='my-4 border border-white rounded-md shadow-md'>
       <div className='p-4'>
-        <div className='py-2 text-l'>{questionAnswers.question}</div>
+        <div className='flex'>
+          <div className='py-2 text-l'>{questionAnswers.question}</div>
+          <div className='bg-blue-900 px-2 mb-8 rounded-b-lg content-center text-xl'>{questionAnswers.questionId}</div>
+        </div>
         {questionAnswers.answers.map((answer, index) => {
           return (<div key={index}>{renderAnswer(answer, questionAnswers.answerCount, questionAnswers.correctAnswers)}</div>)
         })}
