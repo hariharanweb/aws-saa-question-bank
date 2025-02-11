@@ -17,45 +17,58 @@ export interface QuestionAnswersType {
 
 const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswersType }) => {
 
-  const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
 
   useEffect(() => {
     setSelectedAnswers([]);
   }, [questionAnswers])
 
-  const answerSelected = (answer: number) => {
+  const answerSelected = (option: string) => {
     if (questionAnswers.answerCount === 1) {
       setSelectedAnswers([
-        answer
+        option
       ])
     } else {
-      if (selectedAnswers.indexOf(answer) === 0) {
-        const removedAnswer = remove(selectedAnswers, answer)
+      if (selectedAnswers.indexOf(option) === 0) {
+        const removedAnswer = remove(selectedAnswers, option)
         setSelectedAnswers(removedAnswer)
       } else {
         setSelectedAnswers([
           ...selectedAnswers,
-          answer
+          option
         ])
       }
     }
   }
 
-  const renderAnswer = (index: number, answer: AnswerType, answerCount: number) => {
+  const renderAnswer = (answer: AnswerType, answerCount: number, correctAnswers: string[]) => {
+    const answerCss = selectedAnswers.indexOf(answer.option) >= 0 && correctAnswers.indexOf(answer.option) >= 0 ?
+      'py-1 bg-green-900' :
+      'py-1'
     if (answerCount === 1) {
       return (
-        <div className='py-1'>
+        <div className={answerCss}>
           <label>
-            <input type='radio' id={answer.option} onChange={() => { answerSelected(index) }} checked={selectedAnswers.indexOf(index) >= 0} />
+            <input
+              type='radio'
+              id={answer.option}
+              onChange={() => { answerSelected(answer.option) }}
+              checked={selectedAnswers.indexOf(answer.option) >= 0}
+            />
             <span className='pl-2 text-l'>{answer.text}</span>
           </label>
         </div>
       )
     } else {
       return (
-        <div className='py-1'>
+        <div className={answerCss}>
           <label>
-            <input type='checkbox' id={answer.option} onChange={() => answerSelected(index)} checked={selectedAnswers.indexOf(index) >= 0} />
+            <input
+              type='checkbox'
+              id={answer.option}
+              onChange={() => answerSelected(answer.option)}
+              checked={selectedAnswers.indexOf(answer.option) >= 0}
+            />
             <span className='pl-2 text-l'>{answer.text}</span>
           </label>
         </div>
@@ -68,7 +81,7 @@ const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswers
       <div className='p-4'>
         <div className='py-2 text-l'>{questionAnswers.question}</div>
         {questionAnswers.answers.map((answer, index) => {
-          return (<div key={index}>{renderAnswer(index, answer, questionAnswers.answerCount)}</div>)
+          return (<div key={index}>{renderAnswer(answer, questionAnswers.answerCount, questionAnswers.correctAnswers)}</div>)
         })}
       </div>
     </div>
