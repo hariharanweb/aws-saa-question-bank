@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <h1>AWS Question Bank</h1>
-      <Link href="/allQuestions">All Questions</Link>      
+      <Link href="/quiz">Quiz</Link>
     </div>
   );
 }
