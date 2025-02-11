@@ -1,4 +1,4 @@
-import { remove } from 'lodash';
+import { remove, difference } from 'lodash';
 import React, { useEffect, useState } from 'react'
 
 export interface AnswerType {
@@ -17,12 +17,20 @@ export interface QuestionAnswersType {
 }
 
 const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswersType }) => {
-
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+  const [allCorrect, setAllCorrect] = useState<boolean>(false);
 
   useEffect(() => {
     setSelectedAnswers([]);
+    setAllCorrect(false);
   }, [questionAnswers])
+
+  useEffect(() => {
+    if (selectedAnswers.length === questionAnswers.answerCount
+      && difference(selectedAnswers, questionAnswers.correctAnswers).length === 0) {
+      setAllCorrect(true);
+    }
+  }, [selectedAnswers, questionAnswers])
 
   const answerSelected = (option: string) => {
     if (questionAnswers.answerCount === 1) {
@@ -78,17 +86,24 @@ const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswers
   }
 
   return (
-    <div className='my-4 border border-white rounded-md shadow-md'>
-      <div className='p-4'>
-        <div className='flex'>
-          <div className='py-2 text-l'>{questionAnswers.question}</div>
-          <div className='bg-blue-900 px-2 mx-2 mb-8 rounded-b-lg content-center text-xl'>{questionAnswers.questionId}</div>
-          {questionAnswers.isImportant && <div className='bg-green-900 px-2 mb-8 rounded-b-lg content-center text-xl'>IMP</div>}
+    <div>
+      <div className='my-4 border border-white rounded-md shadow-md'>
+        <div className='p-4'>
+          <div className='flex'>
+            <div className='py-2 text-l'>{questionAnswers.question}</div>
+            <div className='bg-blue-900 px-2 mx-2 mb-8 rounded-b-lg content-center text-xl'>{questionAnswers.questionId}</div>
+            {questionAnswers.isImportant && <div className='bg-green-900 px-2 mb-8 rounded-b-lg content-center text-xl'>IMP</div>}
+          </div>
+          {questionAnswers.answers.map((answer, index) => {
+            return (<div key={index}>{renderAnswer(answer, questionAnswers.answerCount, questionAnswers.correctAnswers)}</div>)
+          })}
         </div>
-        {questionAnswers.answers.map((answer, index) => {
-          return (<div key={index}>{renderAnswer(answer, questionAnswers.answerCount, questionAnswers.correctAnswers)}</div>)
-        })}
       </div>
+      {allCorrect &&
+        <div>
+          {questionAnswers.explanation}
+        </div>
+      }
     </div>
   )
 }

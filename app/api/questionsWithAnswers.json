@@ -13,7 +13,7 @@
       },
       {
         "option": "C",
-        "text": "Schedule AWS Snowball Edge Storage Optimized device jobs daily to transfer data from each site to the closest Region. Use S3 Cross-"
+        "text": "Schedule AWS Snowball Edge Storage Optimized device jobs daily to transfer data from each site to the closest Region. Use S3 Cross-Region Replication to copy objects to the destination S3 bucket."
       },
       {
         "option": "D",
@@ -1759,7 +1759,7 @@
       },
       {
         "option": "B",
-        "text": "Deploy and configure an Amazon S3 File Gateway on premises. Move the on-premises file data to the S3 File Gateway. Reconfigure the on-"
+        "text": "Deploy and configure an Amazon S3 File Gateway on premises. Move the on-premises file data to the S3 File Gateway. Reconfigure the on-premises workloads and the cloud workloads to use the S3 File Gateway."
       },
       {
         "option": "C",
@@ -1890,7 +1890,7 @@
     "answers": [
       {
         "option": "A",
-        "text": "Place the EC2 instances in different AWS Regions. Use Amazon Route 53 health checks to redirect trafic. Use Aurora PostgreSQL Cross-"
+        "text": "Place the EC2 instances in different AWS Regions. Use Amazon Route 53 health checks to redirect trafic. Use Aurora PostgreSQL Cross- Region Replication"
       },
       {
         "option": "B",
@@ -2342,7 +2342,7 @@
       },
       {
         "option": "D",
-        "text": "Store the uploaded documents on an Amazon Elastic File System (Amazon EFS) volume. Access the data by mounting the volume in read-"
+        "text": "Store the uploaded documents on an Amazon Elastic File System (Amazon EFS) volume. Access the data by mounting the volume in read-only mode"
       }
     ],
     "answerCount": 1,
@@ -4156,7 +4156,7 @@
     "answers": [
       {
         "option": "A",
-        "text": "Use AWS Control Tower to implement data residency guardrails to deny internet access and deny access to all AWS Regions except ap-"
+        "text": "Use AWS Control Tower to implement data residency guardrails to deny internet access and deny access to all AWS Regions except ap-northeast-3"
       },
       {
         "option": "B",
@@ -7352,7 +7352,7 @@
       },
       {
         "option": "B",
-        "text": "Configure an Amazon CloudFront distribution with the ALB as the origin. Set the cache behavior settings to cache based on the Accept-"
+        "text": "Configure an Amazon CloudFront distribution with the ALB as the origin. Set the cache behavior settings to cache based on the Accept-Language request header"
       },
       {
         "option": "C",
@@ -7732,7 +7732,7 @@
       },
       {
         "option": "D",
-        "text": "Create a t2.micro Amazon EC2 instance. Deploy a LAMP (Linux, Apache, MySQL, PHP/Perl/Python) stack to host the webpage. Use client-"
+        "text": "Create a t2.micro Amazon EC2 instance. Deploy a LAMP (Linux, Apache, MySQL, PHP/Perl/Python) stack to host the webpage. Use client-side scripting to build the contact form. Integrate the form with Amazon WorkMail."
       }
     ],
     "answerCount": 1,
@@ -7958,7 +7958,7 @@
       },
       {
         "option": "B",
-        "text": "Use AWS Snowball Edge to migrate data out of the on-premises solution to Amazon S3. Use the Snowball Edge file interface to provide on-"
+        "text": "Use AWS Snowball Edge to migrate data out of the on-premises solution to Amazon S3. Use the Snowball Edge file interface to provide on-premises systems with local access to the data."
       },
       {
         "option": "C",
@@ -9315,7 +9315,7 @@
       },
       {
         "option": "C",
-        "text": "Use AWS Glue Elastic Views to create a materialized view for the database in Amazon S3. Create an S3 bucket policy to enforce column-"
+        "text": "Use AWS Glue Elastic Views to create a materialized view for the database in Amazon S3. Create an S3 bucket policy to enforce column-level access control for the QuickSight users. Use Amazon S3 as the data source in QuickSight."
       },
       {
         "option": "D",
@@ -9879,7 +9879,7 @@
       },
       {
         "option": "B",
-        "text": "Store the data directly in an Amazon S3 bucket. Implement an S3 Lifecycle policy to move older data to S3 Glacier Deep Archive for long-"
+        "text": "Store the data directly in an Amazon S3 bucket. Implement an S3 Lifecycle policy to move older data to S3 Glacier Deep Archive for long-term storage. Run one-time queries on the data in Amazon S3 by using Amazon Athena."
       },
       {
         "option": "C",
@@ -11425,7 +11425,7 @@
       },
       {
         "option": "D",
-        "text": "Create an S3 Lifecycle configuration with a rule to transition the objects in the S3 bucket to S3 One Zone-Infrequent Access (S3 One Zone-"
+        "text": "Create an S3 Lifecycle configuration with a rule to transition the objects in the S3 bucket to S3 One Zone-Infrequent Access (S3 One Zone-IA)."
       }
     ],
     "answerCount": 1,
@@ -11823,7 +11823,7 @@
       },
       {
         "option": "C",
-        "text": "Group members are allowed the ec2:StopInstances and ec2:TerminateInstances permissions for all Regions when logged in with multi-"
+        "text": "Group members are allowed the ec2:StopInstances and ec2:TerminateInstances permissions for all Regions when logged in with multi-factor authentication (MFA). Group members are permitted any other Amazon EC2 action."
       },
       {
         "option": "D",
@@ -16180,7 +16180,7 @@
     "answers": [
       {
         "option": "A",
-        "text": "Set up a geolocation routing policy. Send the trafic that is near us-west-1 to the on-premises data center. Send the trafic that is near eu-"
+        "text": "Set up a geolocation routing policy. Send the trafic that is near us-west-1 to the on-premises data center. Send the trafic that is near eu-central-1 to eu-central-1."
       },
       {
         "option": "B",
