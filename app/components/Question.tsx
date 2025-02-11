@@ -82,7 +82,8 @@ const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswers
       <div className='p-4'>
         <div className='flex'>
           <div className='py-2 text-l'>{questionAnswers.question}</div>
-          <div className='bg-blue-900 px-2 mb-8 rounded-b-lg content-center text-xl'>{questionAnswers.questionId}</div>
+          <div className='bg-blue-900 px-2 mx-2 mb-8 rounded-b-lg content-center text-xl'>{questionAnswers.questionId}</div>
+          {questionAnswers.isImportant && <div className='bg-green-900 px-2 mb-8 rounded-b-lg content-center text-xl'>IMP</div>}
         </div>
         {questionAnswers.answers.map((answer, index) => {
           return (<div key={index}>{renderAnswer(answer, questionAnswers.answerCount, questionAnswers.correctAnswers)}</div>)
