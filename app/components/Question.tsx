@@ -1,3 +1,4 @@
+import { Badge } from '@mui/material';
 import { remove, difference } from 'lodash';
 import React, { useEffect, useState } from 'react'
 
@@ -86,25 +87,26 @@ const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswers
   }
 
   return (
-    <div>
-      <div className='my-4 border border-white rounded-md shadow-md'>
-        <div className='p-4'>
-          <div className='flex'>
-            <div className='py-2 text-l'>{questionAnswers.question}</div>
-            <div className='bg-blue-900 px-2 mx-2 mb-8 rounded-b-lg content-center text-xl'>{questionAnswers.questionId}</div>
-            {questionAnswers.isImportant && <div className='bg-green-900 px-2 mb-8 rounded-b-lg content-center text-xl'>IMP</div>}
+    <Badge badgeContent={questionAnswers.questionId} max={999} className='mt-8' color="success">
+      <div>
+        <div className='my-4 border border-white rounded-md shadow-md'>
+          <div className='p-4'>
+            <div className='flex'>
+              <div className='py-2 text-l'>{questionAnswers.question}</div>
+              {questionAnswers.isImportant && <div className='bg-green-900 px-2 mb-8 rounded-b-lg content-center text-xl'>IMP</div>}
+            </div>
+            {questionAnswers.answers.map((answer, index) => {
+              return (<div key={index}>{renderAnswer(answer, questionAnswers.answerCount, questionAnswers.correctAnswers)}</div>)
+            })}
           </div>
-          {questionAnswers.answers.map((answer, index) => {
-            return (<div key={index}>{renderAnswer(answer, questionAnswers.answerCount, questionAnswers.correctAnswers)}</div>)
-          })}
         </div>
+        {allCorrect &&
+          <div>
+            {questionAnswers.explanation}
+          </div>
+        }
       </div>
-      {allCorrect &&
-        <div>
-          {questionAnswers.explanation}
-        </div>
-      }
-    </div>
+    </Badge>
   )
 }
 
