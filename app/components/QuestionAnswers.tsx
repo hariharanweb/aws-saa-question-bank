@@ -19,19 +19,10 @@ export interface QuestionAnswersType {
 
 const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswersType }) => {
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
-  const [allCorrect, setAllCorrect] = useState<boolean>(false);
 
   useEffect(() => {
     setSelectedAnswers([]);
-    setAllCorrect(false);
   }, [questionAnswers])
-
-  useEffect(() => {
-    if (selectedAnswers.length === questionAnswers.answerCount
-      && difference(selectedAnswers, questionAnswers.correctAnswers).length === 0) {
-      setAllCorrect(true);
-    }
-  }, [selectedAnswers, questionAnswers])
 
   const answerSelected = (option: string) => {
     if (questionAnswers.answerCount === 1) {
@@ -85,7 +76,8 @@ const QuestionAnswers = ({ questionAnswers }: { questionAnswers: QuestionAnswers
       )
     }
   }
-
+  const allCorrect = selectedAnswers.length === questionAnswers.answerCount
+    && difference(selectedAnswers, questionAnswers.correctAnswers).length === 0
   return (
     <Badge badgeContent={questionAnswers.questionId} max={999} className='mt-8' color="success">
       <div>

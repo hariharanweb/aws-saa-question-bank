@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
 import QuestionsApi from '../services/QuestionsApi'
-import QuestionAnswers, { QuestionAnswersType } from '../components/Question';
+import QuestionAnswers, { QuestionAnswersType } from '../components/QuestionAnswers';
 
 const Quiz = () => {
   const [questions, setQuestions] = useState<QuestionAnswersType[]>([]);
@@ -42,8 +42,8 @@ const Quiz = () => {
         <>
           {renderQuestionAnswer(questions[currentIndex])}
           <div className='grid grid-cols-2 place-items-stretch gap-4 py-4'>
-            <Button variant="contained"  onClick={() => goToPreviousQuestion()}>Previous</Button>
-            <Button variant="contained"  onClick={() => goToNextQuestion()}>Next</Button>
+            <Button variant="contained" onClick={() => goToPreviousQuestion()}>Previous</Button>
+            <Button variant="contained" onClick={() => goToNextQuestion()}>Next</Button>
           </div>
         </>
       }
