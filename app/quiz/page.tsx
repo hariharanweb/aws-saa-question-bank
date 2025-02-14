@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
 import QuestionsApi from '../services/QuestionsApi'
 import QuestionAnswers, { QuestionAnswersType } from '../components/QuestionAnswers';
+import { LinearProgress, Skeleton } from '@mui/material';
 
 const Quiz = () => {
   const [questions, setQuestions] = useState<QuestionAnswersType[]>([]);
@@ -37,13 +38,13 @@ const Quiz = () => {
   return (
     <div>
       <div className='text-2xl py-2'>Quiz</div>
-      <hr />
       {areQuestionsLoaded &&
         <>
+          <LinearProgress className='mt-4 pt-1' color='success' variant="determinate" value={((currentIndex + 1) / questions.length) * 100} />
           {renderQuestionAnswer(questions[currentIndex])}
           <div className='grid grid-cols-2 place-items-stretch gap-4 py-4'>
-            <Button variant="contained" onClick={() => goToPreviousQuestion()}>Previous</Button>
-            <Button variant="contained" onClick={() => goToNextQuestion()}>Next</Button>
+            <Button variant="contained" onClick={() => goToPreviousQuestion()} disabled={currentIndex === 0}>Previous</Button>
+            <Button variant="contained" onClick={() => goToNextQuestion()} disabled={currentIndex === questions.length - 1}>Next</Button>
           </div>
         </>
       }

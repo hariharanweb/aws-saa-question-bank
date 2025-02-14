@@ -4,6 +4,6 @@ import { shuffle, take } from 'lodash';
 
 export async function GET() {
   const quizQuestions = shuffle(questionsWithAnswers);
-  const subQuestions = take(quizQuestions, 50)
+  const subQuestions = take(quizQuestions, 10)
   return NextResponse.json(subQuestions)
 }
