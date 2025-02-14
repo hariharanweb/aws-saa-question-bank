@@ -27,7 +27,7 @@ const parse1 = () => {
       return result;
     }
   }).filter((a) => a)
-  fs.writeFileSync('./answers50.json', JSON.stringify(ans50, null, 2));
+  fs.writeFileSync('./generated/answers50.json', JSON.stringify(ans50, null, 2));
 }
 
 const parse2 = () => {
@@ -72,7 +72,7 @@ const parse2 = () => {
       return result;
     }
   }).filter((a) => a)
-  fs.writeFileSync('./answer51185.json', JSON.stringify(ans51185, null, 2));
+  fs.writeFileSync('./generated/answer51185.json', JSON.stringify(ans51185, null, 2));
 }
 
 const parse3 = () => {
@@ -87,7 +87,7 @@ const parse3 = () => {
       const questionId = questionMatch[1].replace(']', '').trim();
       const result = {
         questionId,
-        explanation: answer.trim(),
+        explanation: answer.replace(/(-{2,})/, '').trim(),
         correctAnswers: [],
         isImportant: false
       }
@@ -102,13 +102,13 @@ const parse3 = () => {
       return result;
     }
   }).filter((a) => a)
-  fs.writeFileSync('./answers186.json', JSON.stringify(answers186, null, 2));
+  fs.writeFileSync('./generated/answers186.json', JSON.stringify(answers186, null, 2));
 }
 
 const combine = () => {
-  const file1 = JSON.parse(fs.readFileSync('./answers50.json', { encoding: 'utf-8' }))
-  const file2 = JSON.parse(fs.readFileSync('./answer51185.json', { encoding: 'utf-8' }))
-  const file3 = JSON.parse(fs.readFileSync('./answers186.json', { encoding: 'utf-8' }))
+  const file1 = JSON.parse(fs.readFileSync('./generated/answers50.json', { encoding: 'utf-8' }))
+  const file2 = JSON.parse(fs.readFileSync('./generated/answer51185.json', { encoding: 'utf-8' }))
+  const file3 = JSON.parse(fs.readFileSync('./generated/answers186.json', { encoding: 'utf-8' }))
 
   const allCombined = [
     ...file1,
@@ -127,11 +127,11 @@ const checkAndWrite = () => {
     }
   }
   console.log(allCombined.length)
-  fs.writeFileSync('./allAnswers.json', JSON.stringify(allCombined, null, 2));
+  fs.writeFileSync('./generated/allAnswers.json', JSON.stringify(allCombined, null, 2));
 }
 
 const combineQuestionsWithAnswers = () => {
-  const allAnswers = JSON.parse(fs.readFileSync('./allAnswers.json', { encoding: 'utf-8' }))
+  const allAnswers = JSON.parse(fs.readFileSync('./generated/allAnswers.json', { encoding: 'utf-8' }))
   const questions = JSON.parse(fs.readFileSync('./app/api/questions.json', { encoding: 'utf-8' }))
 
   const questionWithAnswers = questions.map((question) => {
@@ -152,9 +152,9 @@ const combineQuestionsWithAnswers = () => {
 }
 
 
-// parse1()
-// parse2();
-// parse3();
+parse1()
+parse2();
+parse3();
 
-// checkAndWrite();
+checkAndWrite();
 combineQuestionsWithAnswers()
