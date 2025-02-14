@@ -148,7 +148,7 @@ const combineQuestionsWithAnswers = () => {
         answers: []
       }
   })
-  fs.writeFileSync('./app/api/questionWithAnswers.json', JSON.stringify(questionWithAnswers, null, 2));
+  fs.writeFileSync('./app/api/questionsWithAnswers.json', JSON.stringify(questionWithAnswers, null, 2));
 }
 
 

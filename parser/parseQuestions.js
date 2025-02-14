@@ -12,7 +12,7 @@ const parse = () => {
     const questionText = match[2].trim();
 
     // Split question text into question and answers
-    const questionParts = questionText.split(/(^[A-E]\..*)$/gm); // Split by answer options
+    const questionParts = questionText.split(/(^[A-E]\..*)$/gm);
     const question = questionParts[0].trim();
     let answerCount = 1;
     if (question.toLowerCase().indexOf('choose two') >= 0) {
@@ -25,7 +25,8 @@ const parse = () => {
     for (let i = 1; i < questionParts.length; i += 2) {
       if (questionParts[i]) {
         const option = questionParts[i].trim();
-        const answerText = option.substring(2).trim();
+        const optionContd = questionParts[i + 1].trim();
+        const answerText = option.substring(2).concat(' ' + optionContd).trim();
         answers.push({
           option: answerOptions[answers.length],
           text: answerText
