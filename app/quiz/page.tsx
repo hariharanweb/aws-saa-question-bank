@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
 import QuestionsApi from '../services/QuestionsApi'
 import QuestionAnswers, { QuestionAnswersType } from '../components/QuestionAnswers';
-import { LinearProgress, Skeleton } from '@mui/material';
+import { LinearProgress } from '@mui/material';
 
 const Quiz = () => {
   const [questions, setQuestions] = useState<QuestionAnswersType[]>([]);
