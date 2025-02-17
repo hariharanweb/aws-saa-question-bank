@@ -40,7 +40,7 @@ const Quiz = () => {
       <div className='text-2xl py-2'>Quiz</div>
       {areQuestionsLoaded &&
         <>
-          <LinearProgress className='mt-4 pt-1' color='success' variant="determinate" value={((currentIndex + 1) / questions.length) * 100} />
+          <LinearProgress className='mt-4 pt-1' color='success' variant="determinate" value={((currentIndex) / questions.length) * 100} />
           {renderQuestionAnswer(questions[currentIndex])}
           <div className='grid grid-cols-2 place-items-stretch gap-4 py-4'>
             <Button variant="contained" onClick={() => goToPreviousQuestion()} disabled={currentIndex === 0}>Previous</Button>
