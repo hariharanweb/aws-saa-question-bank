@@ -21,11 +21,13 @@ const Quiz = () => {
   }, [])
 
   const goToNextQuestion = () => {
+    window.scrollTo(0, 0);
     if (currentIndex <= questions.length)
       setCurrentIndex(currentIndex + 1)
   }
 
   const goToPreviousQuestion = () => {
+    window.scrollTo(0, 0);
     if (currentIndex > 0)
       setCurrentIndex(currentIndex - 1)
   }
